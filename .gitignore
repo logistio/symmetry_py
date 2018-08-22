@@ -1,0 +1,52 @@
+# ----------------------------------
+# Symmetry Python - ignored paths
+# ----------------------------------
+.env
+storage/*
+storage/env/*
+storage/local/*
+local/*
+venv/*
+env/
+# Ignore the PyCharm venv python interpreter symlink:
+py
+# Ignore compiled Python files:
+*.pyc
+
+
+# ----------------------------------
+# PyCharm/JetBrain - ignored paths
+# ----------------------------------
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Mongo Explorer plugin
+.idea/**/mongoSettings.xml
+
+# CMake
+cmake-build-*/
+
+# IntelliJ
+out/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Editor-based Rest Client
+.idea/httpRequests
+
+# Vscode
+.vscode
