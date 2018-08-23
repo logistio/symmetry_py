@@ -13,6 +13,9 @@ py
 # Ignore compiled Python files:
 *.pyc
 
+dist/*
+
+MANIFEST
 
 # ----------------------------------
 # PyCharm/JetBrain - ignored paths
