@@ -3,10 +3,11 @@ from  distutils.core import setup
 setup(
     name = 'symmetry_py',
     packages = ['symmetry_py'],
-    version = '0.0.1',  # Ideally should be same as your GitHub release tag varsion
+    version = '0.0.2',
     description = 'Symmetry',
+    license = 'MIT',
     author = 'Logistio Software',
     author_email = 'sudo@logistio.ie',
-    url = 'https://github.com/logistio/symmetry-py',
-    classifiers = [],
+    url = 'https://github.com/logistio/symmetry_py',
+    classifiers = []
 )

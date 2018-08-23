@@ -28,5 +28,6 @@ It is necessary to create a Virtual Env within the context of this project so th
 cluttered by the global environment. Execute the following steps to create a virtual env for this project:
 1. In the project root run `python -m venv env`. You might have to run `python3 -m venv env`.
 2. Point your IDE to use the newly created environment in `./env` folder.
+3. To test that your virtual env is setup properly run `which python`, the path should point to `.../symmetry_py/env/bin/python`.
 
 

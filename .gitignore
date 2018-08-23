@@ -17,6 +17,8 @@ dist/*
 
 MANIFEST
 
+test.py
+
 # ----------------------------------
 # PyCharm/JetBrain - ignored paths
 # ----------------------------------

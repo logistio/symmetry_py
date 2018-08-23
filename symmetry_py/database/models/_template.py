@@ -1,28 +1,23 @@
-from .base_model import BaseModel
-
 from sqlalchemy import Table, MetaData, Column, Integer, BigInteger, Text, DateTime
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import date
 
-Base = declarative_base(cls=BaseModel)
-
 # ==================================================
-# Process
+# Model Name
 # ==================================================
 
-class Process(Base):
+# BaseModel = declarative_base()
+
+class Model(BaseModel):
+
+    __tablename__ = "table_name"
 
     # ==================================================
     # Model Properties
     # ==================================================
 
-    __tablename__ = "process"
-
-    pub_id_column = True
-
     id = Column(BigInteger, primary_key=True)
-    pub_id = Column(Text, nullable=True)
     type = Column(Text, nullable=False)
     external_id = Column(BigInteger, nullable=True)
     process_state_id = Column(BigInteger, nullable=False)
@@ -35,16 +30,6 @@ class Process(Base):
     # ==================================================
     # Model Functions
     # ==================================================
-
-    def __repr__(self):
-        return f"<Process( " \
-               f"id='{self.id}', " \
-               f"type='{self.type}', " \
-               f"external_id='{self.external_id}', " \
-               f"process_state_id={self.process_state_id}, " \
-               f"process_state_detail={self.process_state_detail}, " \
-               f"process_state_at={self.process_state_at}, " \
-               f"payload={self.payload} )>"
 
     # ==================================================
     # Static Functions

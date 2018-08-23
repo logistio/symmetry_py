@@ -8,27 +8,34 @@ from datetime import date
 Base = declarative_base(cls=BaseModel)
 
 # ==================================================
-# Process
+# Process State
 # ==================================================
 
-class Process(Base):
+class ProcessState(Base):
+
+    # ==================================================
+    # Constants
+    # ==================================================
+
+    CODE_PENDING = 'PENDING'
+    CODE_IN_PROGRESS = 'IN_PROGRESS'
+    CODE_PAUSED = 'PAUSED'
+    CODE_CANCELLED = 'CANCELLED'
+    CODE_COMPLETED = 'COMPLETED'
+    CODE_FAILED = 'FAILED'
 
     # ==================================================
     # Model Properties
     # ==================================================
 
-    __tablename__ = "process"
+    __tablename__ = "process_state"
 
     pub_id_column = True
 
     id = Column(BigInteger, primary_key=True)
     pub_id = Column(Text, nullable=True)
-    type = Column(Text, nullable=False)
-    external_id = Column(BigInteger, nullable=True)
-    process_state_id = Column(BigInteger, nullable=False)
-    process_state_detail = Column(Text, nullable=True)
-    process_state_at = Column(DateTime, nullable=False)
-    payload = Column(Text, nullable=True)
+    code = Column(Text, nullable=False)
+    description = Column(Text, nullable=True)
     created_at = Column(DateTime, nullable=False)
     updated_at = Column(DateTime, nullable=True)
 
@@ -37,14 +44,11 @@ class Process(Base):
     # ==================================================
 
     def __repr__(self):
-        return f"<Process( " \
+        return f"<ProcessState( " \
                f"id='{self.id}', " \
-               f"type='{self.type}', " \
-               f"external_id='{self.external_id}', " \
-               f"process_state_id={self.process_state_id}, " \
-               f"process_state_detail={self.process_state_detail}, " \
-               f"process_state_at={self.process_state_at}, " \
-               f"payload={self.payload} )>"
+               f"pub_id='{self.pub_id}', " \
+               f"code={self.code}, " \
+               f"description={self.description} )>"
 
     # ==================================================
     # Static Functions
