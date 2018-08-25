@@ -1,8 +1,9 @@
 from  distutils.core import setup
+from setuptools import find_packages
 
 setup(
     name = 'symmetry_py',
-    packages = ['symmetry_py'],
+    packages = find_packages(),
     version = '0.0.3',
     description = 'Symmetry',
     license = 'MIT',

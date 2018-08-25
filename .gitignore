@@ -2,6 +2,7 @@
 # Symmetry Python - ignored paths
 # ----------------------------------
 .env
+symmetry_py.egg-info/*
 storage/*
 storage/env/*
 storage/local/*
@@ -12,7 +13,7 @@ env/
 py
 # Ignore compiled Python files:
 *.pyc
-
+.DS_Store
 dist/*
 
 MANIFEST
