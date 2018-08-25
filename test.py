@@ -1,6 +1,4 @@
-from symmetry_py.database.models.process_log import ProcessLog
+from symmetry_py.util import equinox 
 
 
-
-print(ProcessLog.make_log_entry(process_id=1,state_id=2))
-
+print(equinox.now())
