@@ -5,6 +5,9 @@
 from datetime import datetime, date
 from typing import List
 
+DB_DATE_FORMAT = '%Y-%m-%d'
+DB_TIME_FORMAT = '%H-%M-%S'
+DB_DATETIME_FORMAT = '%Y-%m-%d %H-%M-%S'
 
 def now() -> datetime:
     return datetime.utcnow()
