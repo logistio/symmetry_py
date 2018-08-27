@@ -33,7 +33,7 @@ class ProcessState(Base):
     pub_id_column = True
 
     id = Column(BigInteger, primary_key=True)
-    pub_id = Column(Text, nullable=True)
+    pubid = Column(Text, nullable=True)
     code = Column(Text, nullable=False)
     description = Column(Text, nullable=True)
     created_at = Column(DateTime, nullable=False)
@@ -46,7 +46,7 @@ class ProcessState(Base):
     def __repr__(self):
         return f"<ProcessState( " \
                f"id='{self.id}', " \
-               f"pub_id='{self.pub_id}', " \
+               f"pub_id='{self.pubid}', " \
                f"code={self.code}, " \
                f"description={self.description} )>"
 

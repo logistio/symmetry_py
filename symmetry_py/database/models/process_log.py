@@ -32,7 +32,7 @@ class ProcessLog(Base):
     pub_id_column = True
 
     id = Column(BigInteger, primary_key=True)
-    pub_id = Column(Text, nullable=True)
+    pubid = Column(Text, nullable=True)
     process_id = Column(BigInteger, nullable=False)
     type = Column(Text, nullable=False)
     message = Column(Text, nullable=True)

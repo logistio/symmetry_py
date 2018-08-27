@@ -22,7 +22,7 @@ class Process(Base):
     pub_id_column = True
 
     id = Column(BigInteger, primary_key=True)
-    pub_id = Column(Text, nullable=True)
+    pubid = Column(Text, nullable=True)
     type = Column(Text, nullable=False)
     external_id = Column(BigInteger, nullable=True)
     process_state_id = Column(BigInteger, nullable=False)
