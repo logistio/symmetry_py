@@ -3,7 +3,7 @@ from .base_model import BaseModel
 from sqlalchemy import Table, MetaData, Column, Integer, BigInteger, Text, DateTime
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.declarative import declarative_base
-from datetime import date
+import datetime
 
 from symmetry_py.util.equinox import now_timestamp
 
@@ -34,11 +34,12 @@ class ProcessLog(Base):
     id = Column(BigInteger, primary_key=True)
     pubid = Column(Text, nullable=True)
     process_id = Column(BigInteger, nullable=False)
+    process_state_id = Column(BigInteger, nullable=False)
     type = Column(Text, nullable=False)
     message = Column(Text, nullable=True)
     message_detail = Column(Text, nullable=True)
     payload = Column(Text, nullable=True)
-    created_at = Column(DateTime, nullable=False)
+    created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
     updated_at = Column(DateTime, nullable=True)
 
     # ==================================================
@@ -65,7 +66,6 @@ class ProcessLog(Base):
             process_id,
             state_id,
             log_level=None,
-            event_at=now_timestamp(),
             message=None,
             message_detail=None,
             payload=None
@@ -80,7 +80,6 @@ class ProcessLog(Base):
 
         process_log.process_id = process_id
         process_log.process_state_id = state_id
-        process_log.created_at = event_at
         process_log.message = message
         process_log.message_detail = message_detail
         process_log.payload = payload
