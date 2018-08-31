@@ -4,7 +4,7 @@ from setuptools import find_packages
 setup(
     name = 'symmetry_py',
     packages = find_packages(),
-    version = '0.0.8',
+    version = '0.0.9',
     description = 'Symmetry',
     license = 'MIT',
     author = 'Logistio Software',
