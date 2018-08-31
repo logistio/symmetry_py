@@ -2,12 +2,12 @@
 # EQUINOX
 # Python time utility helper methods.
 # -------------------------------------------------------------------------
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from typing import List
 
 DB_DATE_FORMAT = '%Y-%m-%d'
-DB_TIME_FORMAT = '%H-%M-%S'
-DB_DATETIME_FORMAT = '%Y-%m-%d %H-%M-%S'
+DB_TIME_FORMAT = '%H:%M:%S'
+DB_DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 def now() -> datetime:
     return datetime.utcnow()
@@ -21,12 +21,60 @@ def now_timestamp() -> str:
     return datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
 
 
-def convert_date_id_to_date(date_id):
+def from_param_date(date_str: str) -> date:
+    return datetime.strptime(str(date_str), DB_DATE_FORMAT).date()
+
+
+def from_param_datetime(date_str: str) -> date:
+    return datetime.strptime(str(date_str), DB_DATETIME_FORMAT)
+
+
+# CONVERT FROM: str ----
+def convert_date_str_to_date(date_str: str) -> date:
+    return datetime.strptime(str(date_str), "%Y-%m-%d").date()
+
+
+def convert_date_str_to_id(date_str: str) -> int:
+    return convert_date_to_id(convert_date_str_to_date(date_str))
+
+
+# CONVERT FROM: id ----
+def convert_date_id_to_date(date_id) -> date:
     return datetime.strptime(str(date_id), "%Y%m%d").date()
 
 
-def convert_date_to_id(date):
-    return date.year * 10000 + date.month * 100 + date.day
+def convert_date_id_to_str(date_id) -> str:
+    date_obj = convert_date_id_to_date(date_id)
+    return date_obj.strftime("%Y-%m-%d")
+
+
+# CONVERT FROM: date ----
+def convert_date_to_id(date_obj) -> int:
+    return date_obj.year * 10000 + date_obj.month * 100 + date_obj.day
+
+
+def convert_date_to_str(date_obj) -> str:
+    return date_obj.strftime("%Y-%m-%d")
+
+
+# -------------------------------------------------------------------------
+# DATE RANGES
+# -------------------------------------------------------------------------
+
+def create_daily_date_ranges(date_from: date, date_to: date) -> List[date]:
+    """
+    :param date_from: INCLUDED.
+    :param date_to: EXCLUDED. The output range does NOT contain this date.
+    :return:
+    """
+    if date_from >= date_to:
+        raise ValueError("date_from must be chronologically before date_to.")
+    date_range = []
+    next_date = date_from
+    while next_date < date_to:
+        date_range.append(next_date)
+        next_date += timedelta(days=1)
+    return date_range
 
 
 def create_monthly_date_ranges(date_from, date_to) -> List[List[date]]:
