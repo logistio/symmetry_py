@@ -1,10 +1,8 @@
 from .base_model import BaseModel
 
-from sqlalchemy import Table, MetaData, Column, Integer, BigInteger, Text, DateTime
-from sqlalchemy.orm import Session
-from sqlalchemy.ext.declarative import declarative_base
 from symmetry_py.util import equinox
-import datetime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Table, MetaData, Column, Integer, BigInteger, Text, DateTime
 
 Base = declarative_base(cls=BaseModel)
 
@@ -30,7 +28,7 @@ class Process(Base):
     process_state_detail = Column(Text, nullable=True)
     process_state_at = Column(DateTime, nullable=False)
     payload = Column(Text, nullable=True)
-    created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, nullable=False, default=equinox.now_db)
     updated_at = Column(DateTime, nullable=True)
 
     # ==================================================

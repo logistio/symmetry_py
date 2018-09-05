@@ -17,6 +17,9 @@ def now(with_microsecond=True)->datetime:
 
     return datetime.utcnow().replace(microsecond=0)
 
+def now_db()->datetime:
+    return now(with_microsecond=False)
+
 
 def today() -> date:
     return now().date()

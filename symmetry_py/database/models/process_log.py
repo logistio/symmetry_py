@@ -1,11 +1,11 @@
 from .base_model import BaseModel
 
-from sqlalchemy import Table, MetaData, Column, Integer, BigInteger, Text, DateTime
+import datetime
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.declarative import declarative_base
-import datetime
+from sqlalchemy import Table, MetaData, Column, Integer, BigInteger, Text, DateTime
 
-from symmetry_py.util.equinox import now_timestamp
+from symmetry_py.util import equinox
 
 Base = declarative_base(cls=BaseModel)
 
@@ -39,7 +39,7 @@ class ProcessLog(Base):
     message = Column(Text, nullable=True)
     message_detail = Column(Text, nullable=True)
     payload = Column(Text, nullable=True)
-    created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, nullable=False, default=equinox.now_db)
     updated_at = Column(DateTime, nullable=True)
 
     # ==================================================
