@@ -9,8 +9,13 @@ DB_DATE_FORMAT = '%Y-%m-%d'
 DB_TIME_FORMAT = '%H:%M:%S'
 DB_DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
-def now() -> datetime:
-    return datetime.utcnow()
+
+def now(with_microsecond=True)->datetime:
+
+    if with_microsecond:
+        return datetime.utcnow()
+
+    return datetime.utcnow().replace(microsecond=0)
 
 
 def today() -> date:
