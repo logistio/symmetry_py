@@ -47,7 +47,7 @@ def get_last_n_months(date, n):
 
     month_dates = []
 
-    while cursor <= now:
+    while cursor < now:
         month_dates.append(cursor.strftime('%Y-%m'))
 
         cursor = (cursor + relativedelta(months=+1))
