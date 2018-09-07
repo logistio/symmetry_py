@@ -3,6 +3,7 @@
 # Python time utility helper methods.
 # -------------------------------------------------------------------------
 from datetime import datetime, date, timedelta
+from dateutil.relativedelta import relativedelta
 from typing import List
 
 DB_DATE_FORMAT = '%Y-%m-%d'
@@ -35,6 +36,23 @@ def from_param_date(date_str: str) -> date:
 
 def from_param_datetime(date_str: str) -> date:
     return datetime.strptime(str(date_str), DB_DATETIME_FORMAT)
+
+
+def __get_last_n_months(self, date, n):
+    now = date
+
+    n_months_ago = now + relativedelta(months=-n)
+
+    cursor = n_months_ago
+
+    month_dates = []
+
+    while cursor <= now:
+        month_dates.append(cursor.strftime('%Y-%m'))
+
+        cursor = (cursor + relativedelta(months=+1))
+
+    return month_dates
 
 
 # CONVERT FROM: str ----
