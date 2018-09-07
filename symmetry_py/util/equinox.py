@@ -57,7 +57,7 @@ def get_last_n_months(date, n):
 
         cursor = (cursor + relativedelta(months=+1))
 
-    return month_dates
+    return month_dates.reverse()
 
 
 # CONVERT FROM: str ----
