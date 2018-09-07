@@ -41,13 +41,18 @@ def from_param_datetime(date_str: str) -> date:
 def get_last_n_months(date, n):
     now = date
 
+    n = n - 1
+
+    if n <= 0:
+        return [date]
+
     n_months_ago = now + relativedelta(months=-n)
 
     cursor = n_months_ago
 
     month_dates = []
 
-    while cursor < now:
+    while cursor <= now:
         month_dates.append(cursor.strftime('%Y-%m'))
 
         cursor = (cursor + relativedelta(months=+1))
