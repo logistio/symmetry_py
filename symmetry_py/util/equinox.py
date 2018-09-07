@@ -38,7 +38,7 @@ def from_param_datetime(date_str: str) -> date:
     return datetime.strptime(str(date_str), DB_DATETIME_FORMAT)
 
 
-def get_last_n_months(self, date, n):
+def get_last_n_months(date, n):
     now = date
 
     n_months_ago = now + relativedelta(months=-n)
