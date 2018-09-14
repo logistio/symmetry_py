@@ -9,6 +9,7 @@ from typing import List
 DB_DATE_FORMAT = '%Y-%m-%d'
 DB_TIME_FORMAT = '%H:%M:%S'
 DB_DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+POSTGRES_TIMESTAMP_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
 
 
 def now(with_microsecond=True)->datetime:
@@ -36,6 +37,10 @@ def from_param_date(date_str: str) -> date:
 
 def from_param_datetime(date_str: str) -> date:
     return datetime.strptime(str(date_str), DB_DATETIME_FORMAT)
+
+
+def from_postgres_timestamp(timestamp: str) -> datetime:
+    return datetime.strptime(str(timestamp), POSTGRES_TIMESTAMP_FORMAT)
 
 
 def get_last_n_months(date, n):
