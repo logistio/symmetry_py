@@ -19,8 +19,13 @@ def now(with_microsecond=True)->datetime:
 
     return datetime.utcnow().replace(microsecond=0)
 
+
 def now_db()->datetime:
     return now(with_microsecond=False)
+
+
+# def to_string_format(dt, format)
+
 
 
 def today() -> date:
@@ -41,6 +46,10 @@ def from_param_datetime(date_str: str) -> date:
 
 def from_postgres_timestamp(timestamp: str) -> datetime:
     return datetime.strptime(str(timestamp), POSTGRES_TIMESTAMP_FORMAT)
+
+
+def to_format(dt, format) -> str:
+    return dt.strftime(format)
 
 
 def get_last_n_months(date, n):
