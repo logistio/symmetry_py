@@ -2,7 +2,7 @@
 # EQUINOX
 # Python time utility helper methods.
 # -------------------------------------------------------------------------
-from datetime import datetime, date, timedelta
+from datetime import datetime, date, time, timedelta
 from dateutil.relativedelta import relativedelta
 from typing import List
 
@@ -46,6 +46,19 @@ def from_param_datetime(date_str: str) -> date:
 
 def from_postgres_timestamp(timestamp: str) -> datetime:
     return datetime.strptime(str(timestamp), POSTGRES_TIMESTAMP_FORMAT)
+
+
+def from_time_id_to_time_obj(time_id) -> time:
+    """
+    Given a `time` stored as an integer, convert it to a time object.
+    Eg. time_id -> 2555 (representing time 00:25:55)
+    :param time_id:
+    :return:
+    """
+    time_id_padded = str(time_id).zfill(6)
+    return datetime.strptime(str(time_id_padded), "%H%M%S").time()
+
+    # ---from_time_id_to_time_obj---
 
 
 def to_format(dt, format) -> str:
