@@ -30,6 +30,7 @@ class Process(Base):
     payload = Column(Text, nullable=True)
     created_at = Column(DateTime, nullable=False, default=equinox.now_db)
     updated_at = Column(DateTime, nullable=True)
+    last_check_in_at = Column(DateTime, nullable=True)
 
     # ==================================================
     # Model Functions
@@ -43,6 +44,7 @@ class Process(Base):
                f"process_state_id={self.process_state_id}, " \
                f"process_state_detail={self.process_state_detail}, " \
                f"process_state_at={self.process_state_at}, " \
+               f"last_check_in_at={self.last_check_in_at}, " \
                f"payload={self.payload} )>"
 
     # ==================================================
